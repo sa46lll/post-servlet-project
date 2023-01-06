@@ -48,6 +48,12 @@ public class MemberServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("loginId", id);
 		request.setAttribute("member", member);
+		
+		// Post 전체 조회
+		PostService postService = new PostService();
+		List<PostVo> posts = postService.findAll();
+		request.setAttribute("posts", posts);
+		System.out.println("posts = " + posts);
 
 		RequestDispatcher rd = request.getRequestDispatcher("./login.jsp");
 		rd.forward(request, response);
