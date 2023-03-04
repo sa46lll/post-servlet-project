@@ -135,7 +135,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+							<c:forEach var="post" items="${ posts }">
+								<tr>
+									<td>${ post.getId() }</td>
+									<td><a href="posts/detail?postId=${ post.getId() }">${ post.getTitle() }</a></td>
+									<td>${ post.getMemberId() }</td>
+									<td>${ post.getCreatedAt() }</td>
+									<td>${ post.getLikeCount() }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
