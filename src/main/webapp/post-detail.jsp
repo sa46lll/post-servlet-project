@@ -53,10 +53,10 @@
 								<div class="d-flex flex-row icons d-flex align-items-center">
 									<c:choose>
 										<c:when test="${ isLiked }">
-											<i class="fa fa-heart" onclick="cancelLike()"></i>
+											<i id="likeButton" class="fa fa-heart" onclick="cancelLikePost(${post.getId()})"></i>
 										</c:when>
 										<c:otherwise>
-											<i class="fa fa-heart-o" onclick="likePost()" style="color: red"></i>
+											<i id="likeButton" class="fa fa-heart-o" onclick="likePost(${post.getId()})" style="color: red"></i>
 										</c:otherwise>
 									</c:choose>
 									<!-- <i class="fa fa-heart"></i>  -->

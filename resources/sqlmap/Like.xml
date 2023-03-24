@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dashboard.like">
+	<resultMap id="likeResult" type="Like">
+		<result column="id" property="id"></result>
+		<result column="post_id" property="postId"></result>
+		<result column="member_id" property="memberId"></result>
+	</resultMap>
+	<select id="selectByPostIdAndMemberId" parameterType="Like"
+		resultMap="likeResult">
+		<![CDATA[
+		SELECT id, post_id, member_id
+		FROM likes
+		WHERE post_id = #{postId} AND member_id = #{memberId}
+		]]>
+	</select>
+	<insert id="insert" parameterType="Like">
+		<![CDATA[
+		INSERT INTO likes (post_id, member_id)
+		VALUES (#{postId}, #{memberId})
+		]]>
+	</insert>
+	<delete id="delete" parameterType="Like">
+		<![CDATA[
+		DELETE FROM likes
+		WHERE post_id = #{postId} AND member_id = #{memberId}
+		]]>
+	</delete>
+</mapper>

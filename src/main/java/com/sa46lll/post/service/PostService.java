@@ -42,4 +42,24 @@ public class PostService {
 		session.close();
 		return vo;
 	}
+
+	public void increaseLikeCount(Long postId) {
+		SqlSession session = factory.openSession();
+
+		PostDao dao = new PostDao(session);
+		dao.increaseLikeCount(postId);
+		
+		session.commit();
+		session.close();	
+	}
+
+	public void decreaseLikeCount(Long postId) {
+		SqlSession session = factory.openSession();
+
+		PostDao dao = new PostDao(session);
+		dao.decreaseLikeCount(postId);
+		
+		session.commit();
+		session.close();	
+	}
 }

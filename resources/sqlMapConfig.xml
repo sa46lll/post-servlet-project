@@ -22,6 +22,7 @@
 		<typeAlias alias="Member"
 			type="com.sa46lll.member.vo.MemberVo" />
 		<typeAlias alias="Post" type="com.sa46lll.post.vo.PostVo" />
+		<typeAlias alias="Like" type="com.sa46lll.like.vo.LikeVo" />
 	</typeAliases>
 
 
@@ -64,6 +65,7 @@
 	<mappers>
 		<mapper resource="./sqlmap/Member.xml" />
 		<mapper resource="./sqlmap/Post.xml" />
+		<mapper resource="./sqlmap/Like.xml" />
 	</mappers>
 
 

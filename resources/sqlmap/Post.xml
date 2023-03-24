@@ -28,4 +28,18 @@
 		WHERE id = #{postId}
 		]]>
 	</select>
+	<update id="updateLikeCount" parameterType="Long">
+		<![CDATA[
+		UPDATE post
+		SET like_count = like_count + 1
+		WHERE id = #{postId}
+		]]>
+	</update>
+	<update id="decreaseLikeCount" parameterType="Long">
+		<![CDATA[
+		UPDATE post
+		SET like_count = like_count - 1
+		WHERE id = #{postId}
+		]]>
+	</update>
 </mapper>

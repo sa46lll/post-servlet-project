@@ -29,4 +29,12 @@ public class PostDao {
 		PostVo vo = session.selectOne("dashboard.post.selectOne", postId);
 		return vo;
 	}
+
+	public void increaseLikeCount(Long postId) {
+		session.update("dashboard.post.updateLikeCount", postId);
+	}
+
+	public void decreaseLikeCount(Long postId) {
+		session.update("dashboard.post.decreaseLikeCount", postId);
+	}
 }
