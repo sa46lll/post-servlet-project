@@ -1,6 +1,7 @@
 package com.sa46lll.post.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sa46lll.comment.service.CommentService;
+import com.sa46lll.comment.vo.CommentVo;
 import com.sa46lll.like.service.LikeService;
 import com.sa46lll.like.vo.LikeVo;
 import com.sa46lll.post.service.PostService;
@@ -36,7 +39,10 @@ public class PostDetailServlet extends HttpServlet {
 		LikeService likeService = new LikeService();
 		boolean isLiked = likeService.isLiked(likeVo);
 		request.setAttribute("isLiked", isLiked);
-		System.out.println(isLiked);
+		
+		CommentService commentService = new CommentService();
+		List<CommentVo> comments = commentService.findAllByPostId(postId);
+		request.setAttribute("comments", comments);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("../post-detail.jsp");
 		rd.forward(request, response);
